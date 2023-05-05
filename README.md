@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## DataBase Migrations and Seeding
+
+Set databases configuration in .env file into `api` folder
+DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DIALECT
+
+Then run `npx sequelize-cli db:migrate` and `npx sequelize-cli db:seed:all` to fill Database with sample data
