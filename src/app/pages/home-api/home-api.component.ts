@@ -77,6 +77,7 @@ export class HomeApiComponent implements OnInit {
         });
     });
 
+    this.searchForm.reset();
     await searchP;
   }
 }
