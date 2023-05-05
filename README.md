@@ -1,10 +1,11 @@
+## Clone Repository and Set Ready
+
+For clone this repo make `git clone https://github.com/designspublikt/countries_api.git`
+Then run `npm i` or `npm install` inside Countries folder and api folder to install libraries and dependecies
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## DataBase Migrations and Seeding
 
