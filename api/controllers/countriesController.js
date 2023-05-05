@@ -46,6 +46,16 @@ exports.getById = (req, res) => {
 exports.getByQuery = (req, res) => {
   const { query } = req.params;
 
+  if (query.length < 3) {
+    res.json({
+      status: true,
+      message: "Countries not found with this query",
+      response: [],
+      error: "",
+    });
+    return;
+  }
+
   Country.findAll({
     where: {
       CountryName: {

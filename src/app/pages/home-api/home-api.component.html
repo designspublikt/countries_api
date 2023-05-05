@@ -1,0 +1,50 @@
+<section class="countries-section">
+  <form
+    class="d-flex search-form p-4"
+    [formGroup]="searchForm"
+    (ngSubmit)="searchCountries()"
+    role="search"
+  >
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      formControlName="query"
+    />
+    <button class="btn btn-outline-success m-2" type="submit">Buscar</button>
+    <button
+      class="btn btn-outline-info m-2"
+      type="button"
+      (click)="getAllCountries()"
+    >
+      Refrescar
+    </button>
+  </form>
+
+  <table
+    *ngIf="countriesFiltered.length > 0; else noContent"
+    class="table table-striped"
+  >
+    <thead>
+      <th>Id.</th>
+      <th>Nombre</th>
+      <th>Poblacion</th>
+      <th>Porcentaje de Poblacion</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countriesFiltered">
+        <td>{{ country.CountryId }}</td>
+        <td>{{ country.CountryName }}</td>
+        <td>{{ country.CountryPopulation }}</td>
+        <td>{{ country.PopulationPercentage | number : "1.2-2" }} %</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noContent>
+    <div class="no-content-box text-center p-5">
+      <h1>204</h1>
+      <h2>Content Not Found</h2>
+    </div>
+  </ng-template>
+</section>
