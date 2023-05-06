@@ -5,7 +5,9 @@ Then run `npm i` or `npm install` inside Countries folder and api folder to inst
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files. This will load the front application.
+
+Then run `npm run dev` inside the api folder to run the Server on port 3000
 
 ## DataBase Migrations and Seeding
 
