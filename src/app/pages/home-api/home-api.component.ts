@@ -62,16 +62,12 @@ export class HomeApiComponent implements OnInit {
       this._ApiCountriesService
         .getByQuery(query)
         .subscribe((searchRes: CountryResponse) => {
+          console.log(searchRes);
           if (!searchRes.status) reject(searchRes);
 
           this.countriesFiltered = searchRes.response.map(
             (country: Country) => country
           );
-
-          this.countriesFiltered.forEach((country: Country) => {
-            let currentPop = parseInt(country.CountryPopulation);
-            country.PopulationPercentage = (currentPop * 100) / this.totalPop;
-          });
 
           resolve(searchRes.status);
         });

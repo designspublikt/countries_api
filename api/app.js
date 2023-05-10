@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Settings
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 //Rutas
 app.get("/", (req, res) => {

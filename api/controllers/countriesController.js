@@ -21,29 +21,8 @@ exports.getAll = (req, res) => {
     });
 };
 
-exports.getById = (req, res) => {
-  const { CountryId } = req.params;
-
-  Country.findByPk()
-    .then((response) => {
-      res.json({
-        status: true,
-        message: "Get Country By Id",
-        response,
-        error: "",
-      });
-    })
-    .catch((error) => {
-      res.json({
-        status: false,
-        message: "Error while getting country by id",
-        response: [],
-        error,
-      });
-    });
-};
-
 exports.getByQuery = (req, res) => {
+  let totalPop = 0;
   const { query } = req.params;
 
   if (query.length < 3) {
@@ -56,6 +35,22 @@ exports.getByQuery = (req, res) => {
     return;
   }
 
+  Country.findAll()
+    .then((response) => {
+      response.forEach(country => {
+        totalPop += parseInt(country.dataValues.CountryPopulation);
+      });
+
+    })
+    .catch((error) => {
+      res.json({
+        status: false,
+        message: "Error while getting Countries",
+        response: [],
+        error,
+      });
+    });
+
   Country.findAll({
     where: {
       CountryName: {
@@ -64,10 +59,17 @@ exports.getByQuery = (req, res) => {
     },
   })
     .then((response) => {
+      let completeCountries = [];
+
+      completeCountries = response.map(country => {
+        country.dataValues.PopulationPercentage = (parseInt(country.CountryPopulation) * 100) / totalPop;
+        return country;
+      });
+
       res.json({
         status: true,
         message: "Get Countries By Query",
-        response,
+        response: completeCountries,
         error: "",
       });
     })

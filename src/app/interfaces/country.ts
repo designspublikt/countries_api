@@ -2,7 +2,7 @@ export interface Country {
   CountryId: number;
   CountryName: string;
   CountryPopulation: string;
-  PopulationPercentage?: number;
+  PopulationPercentage: number;
 }
 
 export interface CountryResponse {
